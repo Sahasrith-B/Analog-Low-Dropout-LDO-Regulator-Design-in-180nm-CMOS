@@ -122,21 +122,21 @@ The LDO was evaluated at light load and full load.
 
 The output-voltage variation between light load and full load is:
 
-$$
+```math
 \Delta V_{out}
 =
 1.50186-1.49961
 =
 2.25\,\mathrm{mV}
-$$
+```
 
 The corresponding load-regulation slope is approximately:
 
-$$
+```math
 \frac{\Delta V_{out}}{\Delta I_{load}}
 \approx
 0.028\,\mathrm{mV/mA}
-$$
+```
 
 ---
 
@@ -151,21 +151,21 @@ The input supply was varied by $\pm 2.5\%$ around the nominal 1.8 V.
 
 The resulting output-voltage variation is:
 
-$$
+```math
 \Delta V_{out}
 =
 1.50029-1.49883
 =
 1.46\,\mathrm{mV}
-$$
+```
 
 For comparison, a 2% output variation from the nominal 1.5 V corresponds to:
 
-$$
+```math
 0.02\times1.5
 =
 30\,\mathrm{mV}
-$$
+```
 
 ---
 
@@ -173,9 +173,9 @@ $$
 
 The simulated power-supply rejection ratio at 100 kHz is approximately:
 
-$$
+```math
 \boxed{\sim\!30\,\mathrm{dB}}
-$$
+```
 
 ---
 
@@ -187,21 +187,21 @@ The LDO uses **Miller compensation with a nulling resistor**.
 
 Initially, a smaller compensation capacitor was evaluated:
 
-$$
+```math
 C_c=2\,\mathrm{pF}
-$$
+```
 
 which resulted in a phase margin of approximately:
 
-$$
+```math
 59^\circ
-$$
+```
 
 The transient-response requirement was not achieved with the smaller compensation capacitor. The compensation capacitor was therefore increased progressively, with the final design using:
 
-$$
+```math
 \boxed{C_c=15\,\mathrm{pF}}
-$$
+```
 
 The nulling resistor was incorporated in series with the Miller capacitor to modify the frequency response and improve loop compensation.
 
@@ -211,21 +211,21 @@ The nulling resistor was incorporated in series with the Miller capacitor to mod
 
 Transient performance was evaluated using load-step transitions between:
 
-$$
+```math
 20\,\mathrm{mA}\rightarrow50\,\mathrm{mA}
-$$
+```
 
 and:
 
-$$
+```math
 50\,\mathrm{mA}\rightarrow20\,\mathrm{mA}
-$$
+```
 
 with a load-step edge time of:
 
-$$
+```math
 10\,\mathrm{ns}
-$$
+```
 
 The design target is:
 
@@ -234,15 +234,15 @@ The design target is:
 
 The simulated transient deviation is approximately:
 
-$$
+```math
 \boxed{\sim\!100\,\mathrm{mV}}
-$$
+```
 
 with measured settling intervals within the target:
 
-$$
+```math
 \boxed{<125\,\mathrm{ns}}
-$$
+```
 
 ---
 
@@ -255,13 +255,13 @@ $$
 
 Efficiency is calculated as:
 
-$$
+```math
 \eta
 =
 \frac{V_{out}I_{load}}
 {V_{in}(I_{load}+I_Q)}
 \times100\%
-$$
+```
 
 ---
 
