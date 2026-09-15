@@ -84,7 +84,7 @@ The PMOS pass transistor supplies the required load current and regulates the ou
 # Repository Structure
 
 ```text
-.
+
 └── README.md
 
 └── LDO_Design_Report/
