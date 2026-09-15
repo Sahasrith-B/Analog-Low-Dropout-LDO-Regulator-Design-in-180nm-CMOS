@@ -49,7 +49,7 @@ The PMOS transistor regulates the output voltage and supplies the required load 
 
 ### 4. Miller Compensation
 
-**Method 1 Miller compensation** is used to improve loop stability. A compensation capacitor and nulling resistor are incorporated in the feedback loop to control the dominant pole and improve phase margin.
+**Miller compensation** is used to improve loop stability. A compensation capacitor and nulling resistor are incorporated in the feedback loop to control the dominant pole and improve phase margin.
 
 ---
 
