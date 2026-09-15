@@ -22,20 +22,20 @@ Loop stability is analyzed and improved using **Miller compensation with a nulli
 | Full Load | 100 mA |
 | Off-Chip Output Capacitor | 500 pF |
 | Compensation Method | Miller Compensation + Nulling Resistor |
-| Miller Capacitor | ≤ 15 pF |
-| PSRR @ 100 kHz | 30 dB |
-| Load Regulation | ≤ 2% |
-| Line Regulation | ≤ 2% |
-| Transient Deviation | 150 mV |
-| Load Step | 20 mA ↔ 50 mA |
+| Miller Capacitor | $\leq 15\,\mathrm{pF}$ |
+| PSRR @ 100 kHz | $\sim\!30\,\mathrm{dB}$ |
+| Load Regulation | $\leq 2\%$ |
+| Line Regulation | $\leq 2\%$ |
+| Transient Deviation | $150\,\mathrm{mV}$ |
+| Load Step | 20 mA $\leftrightarrow$ 50 mA |
 | Load-Step Edge Time | 10 ns |
-| Settling Time | < 125 ns |
+| Settling Time | $<125\,\mathrm{ns}$ |
 
 ---
 
 ## LDO Architecture
 
-The LDO consists of three main circuit blocks:
+The LDO consists of the following major circuit blocks:
 
 ```text
              +-------------------+
@@ -58,35 +58,31 @@ The LDO consists of three main circuit blocks:
                       COUT
                        |
                       GND
-
-
-## Architecture
-
-The LDO consists of the following major blocks:
+```
 
 ### 1. Bandgap Reference
 
-Generates the reference voltage used by the feedback loop.
+The bandgap reference generates a stable reference voltage used by the LDO feedback loop.
 
 ### 2. Operational Transconductance Amplifier
 
-The OTA compares the feedback voltage with the bandgap reference and controls the PMOS pass device.
+The OTA compares the feedback voltage with the reference voltage and generates the control signal for the PMOS pass transistor.
 
 ### 3. PMOS Pass Transistor
 
-The PMOS transistor regulates the output voltage and supplies the required load current.
+The PMOS pass transistor supplies the required load current and regulates the output voltage around 1.5 V.
 
 ### 4. Miller Compensation
 
-**Method 1 Miller compensation** is used to improve loop stability. A compensation capacitor and nulling resistor are incorporated in the feedback loop to control the dominant pole and improve phase margin.
+**Method 1** compensation is implemented using a Miller capacitor and a **nulling resistor** to improve loop stability and transient performance.
 
 ---
 
-## Transistor Sizing
+# Transistor Sizing
 
-### Bandgap Reference
+## Bandgap Reference
 
-| Device | Type | \|Vov\| | W | L |
+| Device | Type | $|V_{ov}|$ | W | L |
 |---|---|---:|---:|---:|
 | M5 | PMOS | 213.9 mV | 7 µm | 1 µm |
 | M6 | NMOS | 70.8 mV | 7 µm | 1 µm |
@@ -94,9 +90,9 @@ The PMOS transistor regulates the output voltage and supplies the required load 
 | M10 | PMOS | 213.9 mV | 7 µm | 1 µm |
 | M3 | NMOS | 71.4 mV | 7 µm | 2 µm |
 
-### OTA
+## Operational Transconductance Amplifier
 
-| Device | Type | \|Vov\| | W | L |
+| Device | Type | $|V_{ov}|$ | W | L |
 |---|---|---:|---:|---:|
 | M7 | NMOS | 141 mV | 25 µm | 0.54 µm |
 | M4 | NMOS | 141 mV | 25 µm | 0.54 µm |
@@ -105,124 +101,214 @@ The PMOS transistor regulates the output voltage and supplies the required load 
 | M2 | PMOS | 176 mV | 84 µm | 1 µm |
 | M8 | NMOS | 139 mV | 12.5 µm | 0.54 µm |
 
-### PMOS Pass Device
+## PMOS Pass Device
 
-| Device | Type | Vth | W | L | Multiplier |
+| Device | Type | $V_{th}$ | W | L | Multiplier |
 |---|---|---:|---:|---:|---:|
 | M1 | PMOS | 259 mV | 50 µm | 0.18 µm | 120 |
 
 ---
 
-## Simulation Results
+# Simulation Results
 
-### Load Regulation
+## Load Regulation
 
-The simulated output voltage was evaluated at light and full load:
+The LDO was evaluated at light load and full load.
 
-| Load | Vout | Load Current |
+| Load Condition | $V_{out}$ | Load Current |
 |---|---:|---:|
 | Light Load | 1.50186 V | 20.0248 mA |
 | Full Load | 1.49961 V | 99.9741 mA |
 
-The output variation from light load to full load is approximately:
+The output-voltage variation between light load and full load is:
 
-\[
-\Delta V_{out} = 2.25\text{ mV}
-\]
+```math
+\Delta V_{out}
+=
+1.50186-1.49961
+=
+2.25\,\mathrm{mV}
+```
 
-corresponding to a load-regulation slope of approximately:
+The corresponding load-regulation slope is approximately:
 
-\[
-0.028\text{ mV/mA}
-\]
+```math
+\frac{\Delta V_{out}}{\Delta I_{load}}
+\approx
+0.028\,\mathrm{mV/mA}
+```
 
 ---
 
 ## Line Regulation
 
-The input voltage was varied by ±2.5% around the nominal 1.8 V supply.
+The input supply was varied by $\pm 2.5\%$ around the nominal 1.8 V.
 
-| Vin | Vout |
+| $V_{in}$ | $V_{out}$ |
 |---:|---:|
 | 1.755 V | 1.49883 V |
 | 1.845 V | 1.50029 V |
 
-The output variation is:
+The resulting output-voltage variation is:
 
-\[
-\Delta V_{out}=1.46\text{ mV}
-\]
+```math
+\Delta V_{out}
+=
+1.50029-1.49883
+=
+1.46\,\mathrm{mV}
+```
+
+For comparison, a 2% output variation from the nominal 1.5 V corresponds to:
+
+```math
+0.02\times1.5
+=
+30\,\mathrm{mV}
+```
 
 ---
 
-## PSRR
+# PSRR
 
 The simulated power-supply rejection ratio at 100 kHz is approximately:
 
-\[
-\boxed{\sim 30\text{ dB}}
-\]
+```math
+\boxed{\sim\!30\,\mathrm{dB}}
+```
 
 ---
 
-## Transient Response
+# Loop Stability and Compensation
 
-Transient performance was evaluated using load-step transitions between **20 mA and 50 mA** with a **10 ns edge time**.
+Loop stability was analyzed using AC/open-loop simulations.
 
-The design targets:
+The LDO uses **Miller compensation with a nulling resistor**.
 
-- Maximum transient deviation: **150 mV**
-- Settling time: **< 125 ns**
-- Load transitions: **20 mA → 50 mA** and **50 mA → 20 mA**
+Initially, a smaller compensation capacitor was evaluated:
 
-The simulated transient response shows approximately **100 mV peak deviation**, with settling intervals within the target range.
+```math
+C_c=2\,\mathrm{pF}
+```
+
+which resulted in a phase margin of approximately:
+
+```math
+59^\circ
+```
+
+The transient-response requirement was not achieved with the smaller compensation capacitor. The compensation capacitor was therefore increased progressively, with the final design using:
+
+```math
+\boxed{C_c=15\,\mathrm{pF}}
+```
+
+The nulling resistor was incorporated in series with the Miller capacitor to modify the frequency response and improve loop compensation.
 
 ---
 
-## Efficiency
+# Transient Response
 
-| Operating Point | Vin | Vout | Load Current | Quiescent Current | Efficiency |
+Transient performance was evaluated using load-step transitions between:
+
+```math
+20\,\mathrm{mA}\rightarrow50\,\mathrm{mA}
+```
+
+and:
+
+```math
+50\,\mathrm{mA}\rightarrow20\,\mathrm{mA}
+```
+
+with a load-step edge time of:
+
+```math
+10\,\mathrm{ns}
+```
+
+The design target is:
+
+- Maximum overshoot/undershoot: $150\,\mathrm{mV}$
+- Settling time: $<125\,\mathrm{ns}$
+
+The simulated transient deviation is approximately:
+
+```math
+\boxed{\sim\!100\,\mathrm{mV}}
+```
+
+with measured settling intervals within the target:
+
+```math
+\boxed{<125\,\mathrm{ns}}
+```
+
+---
+
+# Efficiency
+
+| Load Condition | $V_{in}$ | $V_{out}$ | $I_{load}$ | $I_Q$ | Efficiency |
 |---|---:|---:|---:|---:|---:|
 | Light Load | 1.8 V | 1.50186 V | 20.0248 mA | 151 µA | 82.8% |
 | Full Load | 1.8 V | 1.49961 V | 99.9741 mA | 151 µA | 83.2% |
 
----
+Efficiency is calculated as:
 
-## Compensation Design
-
-Initially, the design was evaluated with a smaller Miller compensation capacitor.
-
-With:
-
-\[
-C_c = 2\text{ pF}
-\]
-
-the simulated phase margin was approximately:
-
-\[
-59^\circ
-\]
-
-However, the transient-response requirement was not satisfied. The compensation capacitor was therefore increased progressively, with the final design using:
-
-\[
-\boxed{C_c = 15\text{ pF}}
-\]
-
-The Miller compensation network uses a **nulling resistor** to improve the frequency response and loop stability.
+```math
+\eta
+=
+\frac{V_{out}I_{load}}
+{V_{in}(I_{load}+I_Q)}
+\times100\%
+```
 
 ---
 
-## Repository Structure
+# Key Performance Summary
+
+| Metric | Result |
+|---|---:|
+| Input Voltage | 1.8 V |
+| Regulated Output | $\sim$1.5 V |
+| Load Range | 20–100 mA |
+| Load Regulation | $\sim$0.15% |
+| Line Regulation | 1.46 mV output variation |
+| PSRR @ 100 kHz | $\sim\!30\,\mathrm{dB}$ |
+| Transient Deviation | $\sim$100 mV |
+| Settling Time | $<125\,\mathrm{ns}$ |
+| Miller Capacitor | 15 pF |
+| Compensation | Miller + Nulling Resistor |
+| Full-Load Efficiency | 83.2% |
+
+---
+
+# Simulation & Analysis
+
+The design was evaluated through:
+
+- DC operating-point analysis
+- Load-regulation analysis
+- Line-regulation analysis
+- AC/open-loop frequency-response analysis
+- Phase-margin analysis
+- PSRR analysis
+- Transient load-step analysis
+- Efficiency analysis
+
+---
+
+# Repository Structure
 
 ```text
 .
 ├── README.md
+│
 ├── schematic/
 │   ├── bandgap/
 │   ├── ota/
 │   └── ldo/
+│
 ├── simulation/
 │   ├── ac/
 │   ├── transient/
@@ -230,9 +316,48 @@ The Miller compensation network uses a **nulling resistor** to improve the frequ
 │   ├── line_regulation/
 │   ├── psrr/
 │   └── efficiency/
+│
 ├── plots/
 │   ├── bode/
 │   ├── transient/
-│   └── psrr/
+│   ├── psrr/
+│   └── regulation/
+│
 └── report/
     └── LDO_Report.pdf
+```
+
+---
+
+# Tools & Technology
+
+- **CMOS Technology:** SCL 180 nm
+- **Circuit:** Analog LDO Regulator
+- **Reference:** Bandgap Reference
+- **Amplifier:** Operational Transconductance Amplifier
+- **Pass Device:** PMOS
+- **Compensation:** Miller Compensation + Nulling Resistor
+- **Output Capacitor:** 500 pF
+- **Analysis:** DC, AC, transient, PSRR, regulation, and efficiency
+
+---
+
+# Key Takeaways
+
+- Designed an **analog LDO regulator in SCL 180 nm CMOS**.
+- Integrated a **bandgap reference, OTA, and PMOS pass transistor**.
+- Performed **loop-stability analysis** using open-loop AC simulations.
+- Implemented **Miller compensation with a nulling resistor**.
+- Evaluated the regulator under **20 mA to 100 mA load conditions**.
+- Characterized **load regulation, line regulation, PSRR, transient response, and efficiency**.
+- Optimized the compensation capacitor to improve transient response and settling behavior.
+
+---
+
+# Author
+
+**Sahasrith Bootla**
+
+**EE 660 — Power Management IC Design**
+
+**SCL 180 nm CMOS Technology**
