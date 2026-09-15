@@ -23,7 +23,7 @@ Loop stability is analyzed and improved using **Miller compensation with a nulli
 | Off-Chip Output Capacitor | 500 pF |
 | Compensation Method | Miller Compensation + Nulling Resistor |
 | Miller Capacitor | ≤ 15 pF |
-| PSRR @ 100 kHz | $\sim\!30\,\mathrm{dB}$ |
+| PSRR @ 100 kHz | $\sim\30\,\mathrm{dB}$ |
 | Load Regulation | ≤ 2% |
 | Line Regulation | ≤ 2% |
 | Transient Deviation | 150 mV |
