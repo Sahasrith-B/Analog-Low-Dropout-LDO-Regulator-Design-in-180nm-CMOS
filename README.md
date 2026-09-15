@@ -132,7 +132,7 @@ The PMOS pass transistor supplies the required load current and regulates the ou
 
 # Author
 
-**Sahasrith Bootla**
+**Sahasrith Bootla**/**Electrical Engineering | IIT GANDHINAGAR**
 
 **EE 660 — Power Management IC Design**
 
