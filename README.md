@@ -85,22 +85,22 @@ The PMOS pass transistor supplies the required load current and regulates the ou
 
 ```text
 .
-├── README.md
+└── README.md
 
 └── LDO_Design_Report/
-│   ├── bandgap/
-│   ├── ota/
-│   └── ldo/
-│   ├── ac/
-│   ├── transient/
-│   ├── load_regulation/
-│   ├── line_regulation/
-│   ├── psrr/
-│   └── efficiency/
-│   ├── bode/
-│   ├── transient/
-│   ├── psrr/
-│   └── regulation/
+   ├── bandgap/
+   ├── ota/
+   ├── ldo/
+   ├── ac/
+   ├── transient/
+   ├── load_regulation/
+   ├── line_regulation/
+   ├──  psrr/
+   ├── efficiency/
+   ├── bode/
+   ├──  transient/
+   ├──  psrr/
+   └── regulation/
 ```
 
 ---
