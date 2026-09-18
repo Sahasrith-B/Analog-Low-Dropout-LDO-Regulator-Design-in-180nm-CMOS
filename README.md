@@ -1,4 +1,4 @@
-# Analog LDO Regulator — SCL 180nm CMOS
+# Analog-Low-Dropout-LDO-Regulator-Design-in-180nm-CMOS
 
 Design of a Low Dropout (LDO) Voltage Regulator in **SCL 180nm CMOS technology**, developed as Project 1 for **EE 660: Power Management IC Design**.
 
