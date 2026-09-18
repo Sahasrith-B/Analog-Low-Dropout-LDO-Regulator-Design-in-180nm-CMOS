@@ -136,8 +136,6 @@ Key derivations included in the report / notes:
     ├── results/  
 ```
 ## 8. References
-
-- EE 660 Power Management IC Design, Project 1 specification (18.01.2026)
 - SCL 180nm CMOS process design kit
 
 ---
