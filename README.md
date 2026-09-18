@@ -131,10 +131,10 @@ Key derivations included in the report / notes:
 ```
 .
 ├── README.md
-├── schematics/        # Transistor-level schematics (BGR, OTA, LDO)
-├── testbenches/        # PSRR, transient, loop-gain, line/load regulation testbenches
-├── results/             # Simulation plots and waveform captures
-└── report/              # Full project report (PDF)
+└── report/                # Full project report (PDF)
+    ├── schematics/        # Transistor-level schematics (BGR, OTA, LDO)
+    ├── testbenches/       # PSRR, transient, loop-gain, line/load regulation testbenches
+    ├── results/  
 ```
 
 > Update the folder names above to match your actual repository contents.
@@ -146,4 +146,3 @@ Key derivations included in the report / notes:
 
 ---
 
-*This README was generated from the project specification and simulation report for submission/tracking purposes.*
