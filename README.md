@@ -24,7 +24,7 @@ The regulator converts a 1.8 V input rail to a regulated 1.5 V output, using:
 | Output voltage (Vout) | 1.5 V |
 | Load current | 20 mA (light) / 50 mA (nominal) / 100 mA (full) |
 | Output capacitor (off-chip) | 500 pF |
-| On-chip compensation cap (Cm) | ≤ 15 pF (Method 1) *or* buffer topology (Method 2 — as allotted) |
+| On-chip compensation cap (Cm) | ≤ 15 pF |
 | PSRR @ 100 kHz | −40 dB |
 | Efficiency (η) | ≥ 83 % across load range |
 | DC error in Vout | ≤ ± 0.1 mV |
