@@ -14,7 +14,7 @@ The regulator converts a 1.8 V input rail to a regulated 1.5 V output, using:
 
 - A **Bandgap Reference (BGR)** circuit to generate a stable `Vref` and bias current from the single available 1.8 V ideal source
 - An **Operational Transconductance Amplifier (OTA)** as the error amplifier
-- A **PMOS pass transistor** driven through the Method-2 buffer topology
+- A **PMOS pass transistor** driven through the miller compensation topology
 - **Frequency compensation** via an on-chip Miller capacitor with a nulling series resistor
 
 ## 2. Target Specifications
