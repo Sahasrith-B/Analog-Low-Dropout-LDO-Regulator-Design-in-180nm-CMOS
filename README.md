@@ -135,9 +135,6 @@ Key derivations included in the report / notes:
     ├── testbenches/       # PSRR, transient, loop-gain, line/load regulation testbenches
     ├── results/  
 ```
-
-> Update the folder names above to match your actual repository contents.
-
 ## 8. References
 
 - EE 660 Power Management IC Design, Project 1 specification (18.01.2026)
